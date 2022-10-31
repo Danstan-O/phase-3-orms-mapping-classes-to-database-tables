@@ -8,6 +8,7 @@ class Song
     @album = album
   end
 
+
   def self.create_table
     sql = <<-SQL
     CREATE TABLE IF NOT EXISTS songs (
@@ -29,6 +30,7 @@ class Song
     self.id = DB[:conn].execute("SELECT last_insert_rowid() FROM songs")[0][0]
     self
   end
+
 
   def self.create(name:, album:)
     song = Song.new(name: name, album: album)
